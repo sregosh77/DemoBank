@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+      <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .brand-name {
+        background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-weight: bold;
+            font-size: 32px;
+            font-family: 'Gill Sans',sans-serif ;
+            }
+
+        .navbar {
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+            padding: 10px 20px;
+        }
+
+
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #2c3e50;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+
+        .user-greeting {
+            color: grey; /* Set the text color to red */
+            font-weight: bold;
+            margin-left: 900px;
+            background-color:black;
+}
+
+
+
+    </style>
+
+
+
+
+
+<div class="brand-name">Banking Website</div>
+    <div class="navbar">
+
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+
+        <div class="dropdown">
+            <div class="dropbtn">Branches</div>
+            <div class="dropdown-content">
+                <a href="{% url 'thrissur' %}">THRISSUR</a>
+                <a href="{% url 'kochi' %}">KOCHI</a>
+                <a href="{% url 'kannur' %}">KANNUR</a>
+                <a href="{% url 'palakkad' %}">PALAKKAD</a>
+                <a href="{% url 'malappuram' %}">MALAPPURAM</a>
+
+
+
+            </div>
+            {% if user.is_authenticated %}
+                <span class="user-greeting">Welcome, {{ user.username }}</span>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+
+    {% block content %}
+    {% endblock %}
+<footer style="text-align: center;  color: black; padding: 10px;">
+        Contact us: abcbank@pvt.lmt
+    </footer>
+</body>
+</html>

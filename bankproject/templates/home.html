@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--<nav>-->
+<!--        <ul>-->
+<!--            <li><a href="{% url 'home' %}">Home</a></li>-->
+<!--            <li><a href="{% url 'login' %}">Login</a></li>-->
+<!--            <li><a href="{% url 'register' %}">Register</a></li>-->
+<!--            <li class="dropdown">-->
+<!--                <a href="#">Branches</a>-->
+<!--                <div class="dropdown-content">-->
+<!--                    <a href="{% url 'thrissur' %}">THRISSUR</a>-->
+<!--                    <a href="{% url 'kochi' %}">KOCHI</a>-->
+<!--                    <a href="{% url 'kannur' %}">KANNUR</a>-->
+<!--                    <a href="{% url 'palakkad' %}">PALAKKAD</a>-->
+<!--                    <a href="{% url 'malappuram' %}">MALAPPURAM</a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--<a href="{% url 'login' %}">Login</a>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .brand-name {
+        background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-weight: bold;
+            font-size: 32px;
+            font-family: 'Gill Sans',sans-serif ;
+            }
+        .navbar {
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+            padding: 10px 20px;
+        }
+        .overlay-image-container {
+    position: relative;
+    text-align: center;
+}
+
+        .my_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    top: 100;
+    left: 0;
+}
+
+       .image-text {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* You can adjust the text color */
+    text-align: center;
+    width: 100%;
+}
+
+       .image-text h1 {
+    font-size: 46px;
+    margin-bottom: 10px;
+}
+
+       .image-text p {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #2c3e50;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .image-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 30px;
+        }
+
+        .image-button {
+            display: inline-block;
+            border-radius: 80%;
+            overflow: hidden;
+            width: 80px;
+            height: 80px;
+            transition: transform 0.3s;
+        }
+
+        .image-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: navyblue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+        .custom-button:hover {
+    background-color: red;
+}
+
+        </style>
+
+    <div class="overlay-image-container">
+
+
+        <img class="my_image my_image_padding" src="{% static 'img/worldbank.png' %}" alt="BANK">
+        <div class="image-text">
+            <a href="{% url 'logout' %}" class="custom-button">Logout</a>
+            <h1>Welcome to Our Banking Website</h1>
+
+            <p>This website helps you to easy money investments </p>
+            <div class="image-buttons">
+            <a href="#" class="image-button">
+                <img src="{% static 'img/img_2.png' %}" alt="Button 1">
+            </a>
+            <a href="#" class="image-button">
+                <img src="{% static 'img/img_3.png' %}" alt="Button 2">
+            </a>
+            <a href="#" class="image-button">
+                <img src="{% static 'img/img_1.png' %}" alt="Button 3">
+            </a>
+
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

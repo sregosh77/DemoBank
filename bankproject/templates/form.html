@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form select {
+            height: 40px;
+        }
+
+        form textarea {
+            resize: vertical;
+        }
+
+        form input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        form button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #2980b9;
+        }
+
+        .success-message {
+            color: #2ecc71;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .return-home {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .return-home:hover {
+            text-decoration: underline;
+        }
+        .messages {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+        .messages p {
+        padding: 10px;
+        background-color: #2ecc71;
+        color: white;
+        border-radius: 5px;
+        .logout-button {
+        text-align: center;
+        margin-top: 20px;
+    }
+        .submit-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+        .submit-button:hover {
+    background-color: #2980b9;
+}
+
+        .logout-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+       .logout-button:hover {
+    background-color: #c0392b;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+
+            <label for="district">District:</label>
+            <select id="district" name="district">
+                <option value="" selected disabled>Select District</option>
+                {% for district, branches in districts.items %}
+                    <option value="{{ district }}">{{ district }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="branch">Branch:</label>
+            <select id="branch" name="branch">
+                {% for branch in selected_branches %}
+                    <option value="{{ branch }}">{{ branch }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="account_type">Account Type:</label>
+            <select id="account_type" name="account_type">
+                <option value="savings">Savings Account</option>
+                <option value="current">Current Account</option>
+            </select>
+
+            <label>Materials Provide:</label><br>
+            <input type="checkbox" id="debit_card" name="materials" value="debit_card">
+            <label for="debit_card">Debit Card</label>
+            <input type="checkbox" id="credit_card" name="materials" value="credit_card">
+            <label for="credit_card">Credit Card</label>
+            <input type="checkbox" id="cheque_book" name="materials" value="cheque_book">
+            <label for="cheque_book">Cheque Book</label>
+
+            <button type="submit">Submit</button>
+             <div class="logout-button">
+        <a href="{% url 'logout' %}" class="logout">Logout</a> <!-- Logout button -->
+    </div>
+        </form>
+        {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+            <a href="{% url 'home' %}" class="return-home">Return to Home</a>
+
+    </div>
+{% endblock %}

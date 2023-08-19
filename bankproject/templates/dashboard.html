@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .dashboard-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dashboard-menu li {
+            margin-bottom: 10px;
+        }
+
+        .dashboard-menu a {
+            display: block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .dashboard-menu a:hover {
+            background-color: #2980b9;
+        }
+
+        .form-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container p {
+            color: #2ecc71;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .return-home {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .return-home:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="dashboard-title">Dashboard</h1>
+        <ul class="dashboard-menu">
+            <li><a href="{% url 'form' %}">Show Form</a></li>
+        </ul>
+        <div class="form-container" id="form-container">
+            <form>
+                <!-- Form fields -->
+            </form>
+            <p>Application accepted</p>
+            <a href="{% url 'home' %}" class="return-home">Return to Home</a>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

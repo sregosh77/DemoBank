@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    <label for="username">Username:</label>-->
+<!--    <input type="text" id="username" name="username" required><br>-->
+<!--    <label for="password">Password:</label>-->
+<!--    <input type="password" id="password" name="password" required><br>-->
+<!--    <label for="confirm_password">Confirm Password:</label>-->
+<!--    <input type="password" id="confirm_password" name="confirm_password" required><br>-->
+<!--    <button type="submit">Register</button>-->
+<!--</form>-->
+<!--<a href="{% url 'login' %}">Back to Login</a>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Banking Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: cream;
+        }
+
+        .registration-container {
+            width: 400px;
+            margin: auto;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .registration-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .registration-input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .registration-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .registration-btn:hover {
+            background-color: #2c3e50;
+        }
+
+        .login-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Create an Account</h2>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <input class="registration-input" type="text" name="username" placeholder="Username" required>
+            <input class="registration-input" type="password" name="password1" placeholder="Password" required>
+            <input class="registration-input" type="password" name="password2" placeholder="Confirm Password" required>
+            <button class="registration-btn" type="submit">Register</button>
+        </form>
+        <p class="login-link">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+</body>
+</html>
+{% endblock %}
